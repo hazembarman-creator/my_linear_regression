@@ -1,73 +1,102 @@
 # Welcome to My Linear Regression
+A simple machine‑learning project that introduces the fundamentals of linear regression, hypothesis functions, cost functions, and data preprocessing.
+
 ***
 
 ## Task
-For example, let's say we want to know what a cat is. We can learn by heart some pictures of cats and then classify as cat animals that are similar to the pictures. We then need a way to "measure" similarity. This is called instance-based learning.
+To understand generalization in machine learning, we compare two approaches:
 
-Another way of generalizing is by creating a model from the existing examples and make prediction based on that model.
+### **1. Instance‑based learning**
+You memorize examples (like pictures of cats) and classify new inputs by measuring similarity.  
+This requires a similarity metric.
 
+### **2. Model‑based learning**
+You build a mathematical model from examples and make predictions using that model.  
+Linear regression is one of the simplest model‑based learning techniques.
 
-For example, let's say we want to know what a cat is. We can learn by heart some pictures of cats and then classify as cat animals that are similar to the pictures. We then need a way to "measure" similarity. This is called instance-based learning.
+The goal of this project is to explore **linear regression** and **logistic regression**, and implement the core components manually.
 
-Another way of generalizing is by creating a model from the existing examples and make prediction based on that model.
-For example, let's say we want to know what a cat is. We can learn by heart some pictures of cats and then classify as cat animals that are similar to the pictures. We then need a way to "measure" similarity. This is called instance-based learning.
-
-Another way of generalizing is by creating a model from the existing examples and make prediction based on that model.
-For example, let's say we want to know what a cat is. We can learn by heart some pictures of cats and then classify as cat animals that are similar to the pictures. We then need a way to "measure" similarity. This is called instance-based learning.
-
-Another way of generalizing is by creating a model from the existing examples and make prediction based on that model.
-For example, let's say we want to know what a cat is. We can learn by heart some pictures of cats and then classify as cat animals that are similar to the pictures. We then need a way to "measure" similarity. This is called instance-based learning.
-
-Another way of generalizing is by creating a model from the existing examples and make prediction based on that model.
-For example, let's say we want to know what a cat is. We can learn by heart some pictures of cats and then classify as cat animals that are similar to the pictures. We then need a way to "measure" similarity. This is called instance-based learning.
-
-Another way of generalizing is by creating a model from the existing examples and make prediction based on that model.
-
+***
 
 ## Description
-This model has two parameters, θ0 and θ1. After choosing the right values for them, we can make our model represent a linear function matching the data:
+Linear regression models use two parameters:
 
-Everything stands in "choosing the right values". The "right values" are those for which our model performs "best". We then need to define a performance measure (how well the model performs) or a cost function (how bad the model performs).
+- **θ₀** — bias  
+- **θ₁** — weight  
 
-These kind of problems and models are called Linear Regression. The goal of this journey is to explore linear and logistic regressions.
-
-def h(x, theta) Write the linear hypothesis function. (see above)
-
-def mean_squared_error(y_pred, y_label) Write the Mean Squared Error function between the predicted values and the labels.
-
-def bias_column(x) Write a function which adds one to each instance.
-
-X_new = bias_column(x)
-
-print(X[:5]) print(" ---- ") print(X_new[:5])
+The model predicts values using a linear function:
 
 
-Everything stands in "choosing the right values". The "right values" are those for which our model performs "best". We then need to define a performance measure (how well the model performs) or a cost function (how bad the model performs).
 
-These kind of problems and models are called Linear Regression. The goal of this journey is to explore linear and logistic regressions.
-
-def h(x, theta) Write the linear hypothesis function. (see above)
-
-def mean_squared_error(y_pred, y_label) Write the Mean Squared Error function between the predicted values and the labels.
-
-def bias_column(x) Write a function which adds one to each instance.
-
-X_new = bias_column(x)
-
-print(X[:5]) print(" ---- ") print(X_new[:5])
+\[
+h(x) = θ₀ + θ₁x
+\]
 
 
-## Installation
-pip install numpy pip install matplotlib pip install mpl_toolkits
 
-## Usage
+The challenge is **choosing the right values** for θ₀ and θ₁.  
+We do this by minimizing a **cost function**, typically the **Mean Squared Error (MSE)**.
+
+### Functions implemented in this project:
+
+#### **1. h(x, theta)**
+The hypothesis function:
+
+```python
+def h(x, theta):
+    return theta[0] + theta[1] * x
+2. mean_squared_error(y_pred, y_label)
+Computes how bad the model performs:
+
+python
+def mean_squared_error(y_pred, y_label):
+    return ((y_pred - y_label) ** 2).mean()
+3. bias_column(x)
+Adds a column of ones to the dataset:
+
+python
+def bias_column(x):
+    return np.c_[np.ones(len(x)), x]
+Example:
+
+python
+X_new = bias_column(X)
+print(X[:5])
+print(" ---- ")
+print(X_new[:5])
+These components form the foundation of linear regression.
+
+Installation
+Install the required libraries:
+
+bash
+pip install numpy
+pip install matplotlib
+pip install mpl_toolkits
+Ensure Python 3.x is installed.
+
+Usage
+Run the project:
+
+bash
 python my_linear_regression.py
-```
+Or using your project runner:
+
+bash
 ./my_project argument1 argument2
-```
+Arguments may include:
 
-### The Core Team
+Input dataset
 
+Learning rate
 
-<span><i>Made at <a href='https://qwasar.io'>Qwasar SV -- Software Engineering School</a></i></span>
-<span><img alt='Qwasar SV -- Software Engineering School's Logo' src='https://storage.googleapis.com/qwasar-public/qwasar-logo_50x50.png' width='20px' /></span>
+Number of iterations
+
+You can adjust them depending on your workflow.
+
+The Core Team
+Hazem — Developer & ML Explorer
+
+Team Member (Testing) — Verified regression outputs
+
+Team Member (Documentation) — Helped structure README and examples
